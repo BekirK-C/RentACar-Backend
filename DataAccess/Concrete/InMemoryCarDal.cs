@@ -9,16 +9,17 @@ namespace DataAccess.Concrete
 {
     public class InMemoryCarDal : ICarDal
     {
-        List<Car> _cars;
+        List<Car> _cars; // Metotların üstünde tanımlanan global değişken alt çizgi (_) ile adlandırılır.
 
-        public InMemoryCarDal()
+        public InMemoryCarDal() // Bu class new'lenince (Bellekte referans alınca) bellekte yeni bir Car listesi oluşacak.
         {
+            // Bir veritabanından geliyormuş gibi veri ekliyoruz.
             _cars = new List<Car>
             {
-                new Car{Id=001, BrandId=001, ColorId=001, DailyPrice=250000, ModelYear=2015, Description="Spor araba"},
-                new Car{Id=002, BrandId=001, ColorId=002, DailyPrice=300000, ModelYear=2018, Description="Spor araba"},
-                new Car{Id=003, BrandId=002, ColorId=002, DailyPrice=150000, ModelYear=2008, Description="Ticari araba"},
-                new Car{Id=004, BrandId=003, ColorId=003, DailyPrice=400000, ModelYear=1975, Description="Klasik araba"},
+                new Car {Id = 001, BrandId = 001, ColorId = 001, DailyPrice = 250000, ModelYear = 2015, Description = "Spor araba"},
+                new Car {Id = 002, BrandId = 001, ColorId = 002, DailyPrice = 300000, ModelYear = 2018, Description = "Spor araba"},
+                new Car {Id = 003, BrandId = 002, ColorId = 002, DailyPrice = 150000, ModelYear = 2008, Description = "Ticari araba"},
+                new Car {Id = 004, BrandId = 003, ColorId = 003, DailyPrice = 400000, ModelYear = 1975, Description = "Klasik araba"},
             };
         }
 

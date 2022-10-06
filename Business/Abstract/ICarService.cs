@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
+    // İş katmanında kullanılacak servis operasyonlarını içerir.
     public interface ICarService
     {
         List<Car> GetAll();

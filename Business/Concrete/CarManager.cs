@@ -9,9 +9,11 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
+        // BİR İŞ SINIFI BAŞKA SINIFLARI NEW'LEMEZ. INJECTION EDİLİR.
+
         ICarDal _carDal;
 
-        public CarManager(ICarDal carDal)
+        public CarManager(ICarDal carDal)   // ProductManager New'lendiğinde bir ICarDal referansı ister.
         {
             _carDal = carDal;
         }

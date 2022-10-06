@@ -5,6 +5,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
+    // Car ile ilgili veritabanında yapılacak işlemleri içeren interface
     public interface ICarDal
     {
         List<Car> GetAll();
