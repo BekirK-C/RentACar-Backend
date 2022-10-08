@@ -13,7 +13,7 @@ namespace Business.Concrete
 
         ICarDal _carDal;
 
-        public CarManager(ICarDal carDal)   // ProductManager New'lendiğinde bir ICarDal referansı ister.
+        public CarManager(ICarDal carDal)   // CarManager New'lendiğinde bir ICarDal referansı ister.
         {
             _carDal = carDal;
         }
