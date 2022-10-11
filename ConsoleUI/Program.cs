@@ -11,9 +11,11 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarTest();
+            // CarTest();
             // BrandTest();
             // ColorTest();
+
+
         }
 
         private static void ColorTest()
@@ -49,10 +51,10 @@ namespace ConsoleUI
                 Console.WriteLine("{0}", car.CarName);
             }
 
-                //foreach (var car in carManager.GetCarDetails())
-                //{
-                //    Console.WriteLine("{0}, {1}, {2}, {3}, ", car.CarName,car.Brandname,car.ColorName,car.DailyPrice);
-                //}
+            //foreach (var car in carManager.GetCarDetails())
+            //{
+            //    Console.WriteLine("{0}, {1}, {2}, {3}, ", car.CarName,car.Brandname,car.ColorName,car.DailyPrice);
+            //}
         }
     }
 }
