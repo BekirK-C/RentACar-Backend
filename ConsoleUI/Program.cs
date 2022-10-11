@@ -14,8 +14,18 @@ namespace ConsoleUI
             // CarTest();
             // BrandTest();
             // ColorTest();
+            // CustomerTest();
 
+        }
 
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.GetAll();
+            foreach (var customer in result.Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
         }
 
         private static void ColorTest()
