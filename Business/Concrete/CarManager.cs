@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -23,14 +24,14 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            if (car.CarName.Length >= 2)
             {
-                _carDal.Add(car);
-                return new SuccessResult("Başarılı");
+                _carDal.Add(car); 
+                return new SuccessResult(Messages.ProductAdded);
             }
             else
             {
-                return new ErrorResult("hatalı");
+                return new ErrorResult(Messages.ProductNameInvalid);
             }
         }
 
@@ -42,12 +43,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.ProductsListed);
         }
 
         public IDataResult<List<Car>> GetByBrandId(int BrandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId), Messages.ProductsListed);
         }
 
         public IDataResult<List<Car>> GetByColorId(int ColorId)
