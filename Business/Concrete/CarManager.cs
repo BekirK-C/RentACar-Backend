@@ -29,8 +29,12 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            _carDal.Add(car);
-            return new SuccessResult(Messages.ProductAdded);
+            if ((CheckIfProductCountOfCategoryCorrect(car.BrandId)).IsSuccess)
+            {
+                _carDal.Add(car);
+                return new SuccessResult(Messages.ProductAdded);
+            }
+            return new ErrorResult();
         }
 
         public IResult Delete(Car car)
@@ -62,6 +66,17 @@ namespace Business.Concrete
         public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfProductCountOfCategoryCorrect(int brandId)
+        {
+            // Bir kategoride en fazla 10 ürün olacak.
+            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;
+            if (result >= 10)
+            {
+                return new ErrorResult(Messages.ProductCountofBrandError);
+            }
             return new SuccessResult();
         }
     }
