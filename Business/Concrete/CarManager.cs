@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -29,12 +30,13 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if ((CheckIfProductCountOfCategoryCorrect(car.BrandId)).IsSuccess)
+            IResult result = BusinessRules.Run(CheckIfCarsCountOfBrandCorrect(car.BrandId));
+            if (result != null)
             {
-                _carDal.Add(car);
-                return new SuccessResult(Messages.ProductAdded);
+                return result;
             }
-            return new ErrorResult();
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Car car)
@@ -45,12 +47,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.ProductsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
 
         public IDataResult<List<Car>> GetByBrandId(int BrandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId), Messages.ProductsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId), Messages.CarListed);
         }
 
         public IDataResult<List<Car>> GetByColorId(int ColorId)
@@ -69,15 +71,15 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult CheckIfProductCountOfCategoryCorrect(int brandId)
+        private IResult CheckIfCarsCountOfBrandCorrect(int brandId)
         {
-            // Bir kategoride en fazla 10 ürün olacak.
+            // Bir markada en fazla 10 araba olacak.
             var result = _carDal.GetAll(c => c.BrandId == brandId).Count;
             if (result >= 10)
             {
-                return new ErrorResult(Messages.ProductCountofBrandError);
+                return new ErrorResult(Messages.CarCountofBrandError);
             }
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarAdded);
         }
     }
 }
