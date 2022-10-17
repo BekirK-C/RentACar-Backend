@@ -18,7 +18,7 @@ namespace Core.Utilities.Helpers.FileHelper
             {
                 File.Delete(filePath);  // Eğer dosya var ise siliniyor.
             }
-        } // BURAYI SİL
+        }
 
         public string Update(IFormFile file, string filePath, string root)
         {
