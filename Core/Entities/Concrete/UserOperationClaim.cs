@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Entities.Concrete
 {
-    public class UserOperationClaims : IEntity
+    public class UserOperationClaim : IEntity
     {
         public int Id { get; set; }
         public int UserId { get; set; }
