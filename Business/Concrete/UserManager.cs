@@ -45,7 +45,6 @@ namespace Business.Concrete
 
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
-
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
         }
 
