@@ -11,7 +11,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    // IProduct, producta özel db işlemleri yapabilmemizi sağlar.
+    // IPCar, car'a özel db işlemleri yapabilmemizi sağlar.
     public class EfCarDal : EfEntityRepositoryBase<Car, CarProjectContext>, ICarDal
     {
         // DTO kullanımı
