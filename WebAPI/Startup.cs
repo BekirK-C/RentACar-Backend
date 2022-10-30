@@ -39,11 +39,7 @@ namespace WebAPI
             // IoC Container
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000"));
-            });
+            services.AddCors();
 
             //services.AddSingleton<IRentalService, RentalManager>();  // Eðer contructor'da IRentalService çalışıyorsa arkaplanda CarManager new'i verir.
             //services.AddSingleton<IRentalDal, EfRentalDal>();
@@ -90,7 +86,7 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4201").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

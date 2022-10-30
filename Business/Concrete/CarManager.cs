@@ -77,7 +77,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetatailDto>>(_carDal.GetCarDetails());
         }
 
-        [CacheRemoveAspect("IProductService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
