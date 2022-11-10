@@ -44,9 +44,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Payment>>(result);
         }
 
-        public IDataResult<Payment> GetById(int id)
+        public IDataResult<Payment> GetById(int idd)
         {
-            var result = _paymentDal.Get(p => p.Id == id);
+            var result = _paymentDal.Get(p => p.Id == idd);
             return new SuccessDataResult<Payment>(result);
         }
 
