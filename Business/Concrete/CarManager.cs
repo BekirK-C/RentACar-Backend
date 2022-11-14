@@ -29,8 +29,8 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        //[SecuredOperation("admin")]
-        //[ValidationAspect(typeof(CarValidator))]
+        [SecuredOperation("car.add, admin")]
+        [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
@@ -48,7 +48,8 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        [SecuredOperation("car.delete")]
+        [ValidationAspect(typeof(CarValidator))]
+        [SecuredOperation("car.delete, admin")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
@@ -72,6 +73,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == ColorId));
         }
 
+        [CacheAspect]
         public IDataResult<List<CarDetatailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetatailDto>>(_carDal.GetCarDetails());
@@ -82,6 +84,13 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetatailDto>>(_carDal.GetCarDetails(c => c.Id == CarId));
         }
 
+        public IDataResult<List<CarDetatailDto>> GetCarsByBrandIdColorId(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetatailDto>>(_carDal.GetCarDetails().Where(p => p.BrandId == brandId && p.ColorId == colorId).ToList());
+        }
+
+        [ValidationAspect(typeof(CarValidator))]
+        [SecuredOperation("car.update, admin")]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {

@@ -66,17 +66,6 @@ namespace ConsoleUI
             Car car1 = new Car { BrandId = 11, CarName = "test", ColorId = 11, DailyPrice = 1, Description = "den", ModelYear = 11 };
             var result = carManager.Add(car1);
             Console.WriteLine(result.IsSuccess + " " + result);
-
-
-            //foreach (var car in carManager.GetAll().Data)
-            //{
-            //    Console.WriteLine("{0}", car.CarName);
-            //}
-
-            //foreach (var car in carManager.GetCarDetails())
-            //{
-            //    Console.WriteLine("{0}, {1}, {2}, {3}, ", car.CarName,car.Brandname,car.ColorName,car.DailyPrice);
-            //}
         }
     }
 }

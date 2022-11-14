@@ -12,11 +12,14 @@ namespace Business.ValidationRules.FluentValidation
         {
             // Hangi nesne için kural yazacaksak buraya yazıyoruz.
 
-            RuleFor(p => p.CarName).NotEmpty();
-            RuleFor(p => p.CarName).MinimumLength(2);
-            RuleFor(p => p.ModelYear).NotEmpty();
-            RuleFor(p => p.ModelYear).GreaterThan(0);
-            RuleFor(p => p.DailyPrice).GreaterThanOrEqualTo(10).When(p => p.BrandId == 1);
+            RuleFor(c => c.BrandId).NotEmpty();
+            RuleFor(c => c.ColorId).NotEmpty();
+            RuleFor(c => c.Description).NotEmpty();
+            RuleFor(c => c.Description).MinimumLength(3);
+            RuleFor(c => c.DailyPrice).NotEmpty();
+            RuleFor(c => c.DailyPrice).GreaterThan(0);
+            RuleFor(c => c.DailyPrice).GreaterThanOrEqualTo(400).When(c => c.BrandId == 1);
+            RuleFor(c => c.ModelYear).NotEmpty();
             RuleFor(p => p.CarName).Must(StartWithA).WithMessage("Araba isimleri A Harfi ile başlamalı");
         }
 

@@ -11,6 +11,7 @@ namespace Business.ValidationRules.FluentValidation
         public ColorValidator()
         {
             RuleFor(c => c.Name).MinimumLength(3).WithMessage("Renk adını boş geçmeyiniz!");
+            RuleFor(c => c.Name).MinimumLength(3);
         }
     }
 }

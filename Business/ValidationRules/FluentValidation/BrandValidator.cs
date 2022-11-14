@@ -11,6 +11,7 @@ namespace Business.ValidationRules.FluentValidation
         public BrandValidator()
         {
             RuleFor(b => b.Name).NotEmpty().WithMessage("Marka adını boş geçmeyiniz!");
+            RuleFor(b => b.Name).MinimumLength(3);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -24,6 +26,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
+        [SecuredOperation("rental.add,admin")]
         public IResult Add(Rental rental)
         {
             IResult result = BusinessRules.Run(CheckIfTheCarIsAlreadyRentedInTheSelectedDateRange(rental), CheckIfThereIsARentalCarOnTheNextDatesWhenTheDeliveryDateIsNull(rental), CheckIfTheCarHasBeenDelivered(rental));
@@ -35,20 +38,24 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RentalAdded);
         }
 
+
+        [ValidationAspect(typeof(RentalValidator))]
+        [SecuredOperation("rental.delete,admin")]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
             return new SuccessResult();
         }
 
+        [CacheAspect]
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        public IDataResult<Rental> GetRental(int rentalId)
+        public IDataResult<Rental> GetRentalByCarId(int carId)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == rentalId));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == carId));
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
@@ -56,6 +63,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.RentalListed);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
+        [SecuredOperation("rental.update,admin")]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
