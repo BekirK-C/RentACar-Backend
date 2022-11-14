@@ -1,5 +1,7 @@
-- This project has been prepared in accordance with SOLID principles, as a training repetition. (ReCapProject)\
-- Project contains Aspects (Validation, Transaction, Cache, Performance).\
+RentACar Project Backend
+
+- This project has been prepared in accordance with SOLID principles, as a training repetition. (ReCapProject)
+- Project contains Aspects (Validation, Transaction, Cache, Performance).
 - JWT is integrated and Autofac support is used.
 
 Build With
@@ -22,6 +24,7 @@ Techniques
 
 -   Layered Architecture Design Pattern
 -   AOP
+-   
 -   IOC
 -   JWT (JSON Web Token)
 -   Autofac dependency resolver
@@ -44,4 +47,4 @@ Feedbacks
 -----------------------------------------------------------------------
 
 If you have any feedback, you can send an e-mail to <b.b.kamac@gmail.com> with the subject title RentACar-Frontend.
-[![LinkedIn](https://www.linkedin.com/in/bekirberatkamac%C4%B1//)
+[LinkedIn](https://www.linkedin.com/in/bekirberatkamac%C4%B1//)
