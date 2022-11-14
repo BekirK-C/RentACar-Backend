@@ -24,7 +24,7 @@ Techniques
 
 -   Layered Architecture Design Pattern
 -   AOP  
--   IOC
+-   IOC  
 -   JWT (JSON Web Token)
 -   Autofac dependency resolver
 -   AOP (Aspect Oriented Programming)
