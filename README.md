@@ -22,13 +22,12 @@ Technologies
 Techniques
 --------------------------------------------------------------------------------
 
--   Layered Architecture Design Pattern
--   AOP  
--   IOC  
--   JWT (JSON Web Token)
--   Autofac dependency resolver
+-   Layered Architecture Design Pattern 
 -   AOP (Aspect Oriented Programming)
+-   Autofac dependency resolver
 -   Role Based Access Control
+-   JWT (JSON Web Token)
+-   IOC  
 
 Contributions
 --------------------------------------------------------------------------------
