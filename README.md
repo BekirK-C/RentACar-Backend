@@ -45,4 +45,4 @@ Feedbacks
 -----------------------------------------------------------------------
 
 If you have any feedback, you can send an e-mail to <b.b.kamac@gmail.com> with the subject title RentACar-Frontend.
-[LinkedIn](https://www.linkedin.com/in/bekirberatkamac%C4%B1//)
+[LinkedIn](https://www.linkedin.com/in/bekirberatkamaci/)
